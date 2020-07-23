@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ParkyAPI.Models;
 
-// ReSharper disable once CheckNamespace
-namespace ParkyAPI.Repository
+namespace ParkyAPI.Repository.IRepository
 {
     public interface INationalParkRepository
-    {
+    { 
+        bool AddNationalPark(NationalPark nationalPark);
+        bool UpdateNationalPark(NationalPark nationalPark);
+        bool RemoveNationalPark(NationalPark nationalPark);
+        bool Save();
+
+        bool NationalParkExists(int nationalParkId); 
+        bool NationalParkExists(string nationalParkName);
+        
         ICollection<NationalPark> GetNationalParks();
         NationalPark GetNationalPark(int nationalParkId);
-        bool NationalParkExists(string nationalParkName);
-        bool NationalParkExists(int nationalParkId);
-        bool CreateNationalPark(NationalPark nationalPark);
-        bool UpdateNationalPark(NationalPark nationalPark);
-        bool DeleteNationalPark(NationalPark nationalPark);
-        bool Save();
     }
 }

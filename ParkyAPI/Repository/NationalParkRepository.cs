@@ -2,50 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ParkyAPI.Data;
 using ParkyAPI.Models;
+using ParkyAPI.Repository.IRepository;
 
 namespace ParkyAPI.Repository
 {
     public class NationalParkRepository: INationalParkRepository
     {
-        public ICollection<NationalPark> GetNationalParks()
+        private readonly ApplicationDbContext _db;
+
+        public NationalParkRepository(ApplicationDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
         }
 
-        public NationalPark GetNationalPark(int nationalParkId)
+        public bool AddNationalPark(NationalPark nationalPark)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool NationalParkExists(string nationalParkName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool NationalParkExists(int nationalParkId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateNationalPark(NationalPark nationalPark)
-        {
-            throw new NotImplementedException();
+            _db.NationalPark.Add(nationalPark);
+            return Save();
         }
 
         public bool UpdateNationalPark(NationalPark nationalPark)
         {
-            throw new NotImplementedException();
+            _db.NationalPark.Update(nationalPark);
+            return Save();
         }
 
-        public bool DeleteNationalPark(NationalPark nationalPark)
+        public bool RemoveNationalPark(NationalPark nationalPark)
         {
-            throw new NotImplementedException();
+            _db.NationalPark.Remove(nationalPark);
+            return Save();
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0;
+        }
+
+        public bool NationalParkExists(int nationalParkId)
+        {
+            return _db.NationalPark.Any(x => x.Id == nationalParkId);
+        }
+
+        public bool NationalParkExists(string nationalParkName)
+        {
+            return _db.NationalPark.Any(x => 
+                x.Name.ToLower().Trim() == nationalParkName.ToLower().Trim());
+        }
+
+        public ICollection<NationalPark> GetNationalParks()
+        {
+            return _db.NationalPark.OrderBy(x => x.Name).ToList();
+        }
+
+        public NationalPark GetNationalPark(int nationalParkId)
+        {
+            return _db.NationalPark.FirstOrDefault(x => x.Id == nationalParkId);
         }
     }
 }
