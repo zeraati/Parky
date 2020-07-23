@@ -21,6 +21,17 @@ namespace ParkyAPI.Controllers
             _nationalParkRepository = nationalParkRepository;
         }
 
+        [HttpGet("{nationalParkId:int}")]
+        public IActionResult GetNationalPark(int nationalParkId)
+        {
+            var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
+
+            if (nationalPark is null) return NotFound();
+
+            var map = NationalParkMapper.Map(nationalPark);
+            return Ok(map);
+        }
+
         [HttpGet]
         public IActionResult GetNationalParks()
         {
