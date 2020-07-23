@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ParkyAPI.Models;
+using ParkyAPI.Models.Dto;
 
 namespace ParkyAPI.Data
 {
@@ -14,6 +15,6 @@ namespace ParkyAPI.Data
 
         }
 
-        public DbSet<NationalParkDto> NationalPark { get; set; }
+        public DbSet<NationalPark> NationalPark { get; set; }
     }
 }

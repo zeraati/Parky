@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using ParkyAPI.Models;
+using ParkyAPI.Models.Dto;
 
 namespace ParkyAPI.Repositories.IRepositories
 {
     public interface INationalParkRepository
     { 
-        bool AddNationalPark(NationalParkDto nationalPark);
-        bool UpdateNationalPark(NationalParkDto nationalPark);
-        bool RemoveNationalPark(NationalParkDto nationalPark);
+        bool AddNationalPark(NationalPark nationalPark);
+        bool UpdateNationalPark(NationalPark nationalPark);
+        bool RemoveNationalPark(NationalPark nationalPark);
         bool Save();
 
         bool NationalParkExists(int nationalParkId); 
         bool NationalParkExists(string nationalParkName);
         
-        ICollection<NationalParkDto> GetNationalParks();
-        NationalParkDto GetNationalPark(int nationalParkId);
+        ICollection<NationalPark> GetNationalParks();
+        NationalPark GetNationalPark(int nationalParkId);
     }
 }
