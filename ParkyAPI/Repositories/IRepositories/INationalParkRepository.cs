@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ParkyAPI.Models;
 
-namespace ParkyAPI.Repository.IRepository
+namespace ParkyAPI.Repositories.IRepositories
 {
     public interface INationalParkRepository
     { 

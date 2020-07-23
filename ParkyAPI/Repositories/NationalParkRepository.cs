@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ParkyAPI.Data;
 using ParkyAPI.Models;
-using ParkyAPI.Repository.IRepository;
+using ParkyAPI.Repositories.IRepositories;
 
-namespace ParkyAPI.Repository
+namespace ParkyAPI.Repositories
 {
     public class NationalParkRepository: INationalParkRepository
     {
