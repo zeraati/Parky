@@ -26,7 +26,7 @@ namespace ParkyAPI.Controllers
         public IActionResult AddNationalPark([FromBody] NationalParkDto nationalParkDto)
         {
             if (nationalParkDto == null) return BadRequest(ModelState);
-            
+
             if (_nationalParkRepository.NationalParkExists(nationalParkDto.Name))
             {
                 ModelState.AddModelError("", "National Park Exists!");
@@ -40,10 +40,10 @@ namespace ParkyAPI.Controllers
                 return StatusCode(500, ModelState);
             }
 
-            return Ok();
+            return CreatedAtRoute("GetNationalPark", new { nationalParkId = nationalPark.Id }, nationalPark);
         }
 
-        [HttpGet("{nationalParkId:int}")]
+        [HttpGet("{nationalParkId:int}", Name = "GetNationalPark")]
         public IActionResult GetNationalPark(int nationalParkId)
         {
             var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
