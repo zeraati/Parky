@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using ParkyAPI.Data;
 using ParkyAPI.Repositories;
 using ParkyAPI.Repositories.IRepositories;
@@ -34,6 +35,11 @@ namespace ParkyAPI
 
             services.AddScoped<INationalParkRepository,NationalParkRepository>();
 
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("ParkyOpenAPISpec",new OpenApiInfo{Title = "Parky API",Version = "1"});
+            });
+
             services.AddControllers();
         }
 
@@ -46,6 +52,8 @@ namespace ParkyAPI
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
 
             app.UseRouting();
 
