@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/nationalpark",
+      //"launchUrl": "api/nationalpark",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

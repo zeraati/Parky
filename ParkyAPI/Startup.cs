@@ -33,11 +33,11 @@ namespace ParkyAPI
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<INationalParkRepository,NationalParkRepository>();
+            services.AddScoped<INationalParkRepository, NationalParkRepository>();
 
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("ParkyOpenAPISpec",new OpenApiInfo{Title = "Parky API",Version = "1"});
+                x.SwaggerDoc("ParkyOpenAPISpec", new OpenApiInfo { Title = "Parky API", Version = "1" });
             });
 
             services.AddControllers();
@@ -47,13 +47,16 @@ namespace ParkyAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseHttpsRedirection();
 
             app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/ParkyOpenAPISpec/swagger.json", "ParkyAPI");
+                x.RoutePrefix = "";
+            });
 
             app.UseRouting();
 
