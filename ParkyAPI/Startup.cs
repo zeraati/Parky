@@ -39,8 +39,24 @@ namespace ParkyAPI
 
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("ParkyOpenAPISpec", new OpenApiInfo { Title = "Parky API", Version = "1" });
-              
+                x.SwaggerDoc("ParkyOpenAPISpec", new OpenApiInfo
+                {
+                    Title = "Parky API",
+                    Version = "1",
+                    Description = "Udemy Parky API NP",
+                    Contact = new OpenApiContact()
+                    {
+                        Email = "udemy@gmail.com",
+                        Name = "Udemy Learn",
+                        Url = new Uri("https://wwww.bhrugen.com")
+                    },
+                    License = new OpenApiLicense()
+                    {
+                        Name = "MIT License",
+                        Url = new Uri("https://en.wikipedia.org/wiki/MIT_License")
+                    }
+                });
+
                 var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var cmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
                 x.IncludeXmlComments(cmlCommentsFullPath);
