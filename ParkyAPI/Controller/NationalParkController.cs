@@ -8,7 +8,7 @@ using ParkyAPI.Repository.IRepositories;
 
 namespace ParkyAPI.Controller
 {
-    [Route("api/[controller]")]
+    [Route("api/nationalPark")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParkController : ControllerBase
