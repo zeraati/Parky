@@ -43,11 +43,11 @@ namespace ParkyAPI
                 {
                     Title = "Parky API",
                     Version = "1",
-                    Description = "Udemy Parky API NP",
+                    Description = "Parky API NP",
                     Contact = new OpenApiContact()
                     {
-                        Email = "udemy@gmail.com",
-                        Name = "Udemy Learn",
+                        Email = "zeraatimail@gmail.com",
+                        Name = "Mojtaba Zeraati",
                         Url = new Uri("https://wwww.bhrugen.com")
                     },
                     License = new OpenApiLicense()
