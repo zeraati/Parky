@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ParkyAPI.Model.Entity;
 
 namespace ParkyAPI.Model.Dto
@@ -22,5 +23,7 @@ namespace ParkyAPI.Model.Dto
 
         [Required]
         public double Elevation { get; set; }
+
+        public DateTime DateCreated { get; set; }
     }
 }
