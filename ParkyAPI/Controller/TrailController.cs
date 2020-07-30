@@ -86,9 +86,9 @@ namespace ParkyAPI.Controller
         }
 
         /// <summary>
-        /// Get individual national park
+        /// Get individual trail
         /// </summary>
-        /// <param name="trailId"> The Id of the national Park </param>
+        /// <param name="trailId"> The Id of the trail </param>
         /// <returns></returns>
         [HttpGet("{trailId:int}", Name = "GetTrail")]
         [ProducesResponseType(200, Type = typeof(TrailDto))]
@@ -105,7 +105,7 @@ namespace ParkyAPI.Controller
         }
 
         /// <summary>
-        /// Get list of national parks.
+        /// Get list of trails.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
