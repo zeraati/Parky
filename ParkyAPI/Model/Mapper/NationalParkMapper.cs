@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ParkyAPI.Models.Dto;
+﻿using ParkyAPI.Model.Dto;
+using ParkyAPI.Model.Entity;
 
-namespace ParkyAPI.Models.Mapper
+namespace ParkyAPI.Model.Mapper
 {
     public class NationalParkMapper
     {

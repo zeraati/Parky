@@ -4,14 +4,14 @@
         <name>ParkyAPI</name>
     </assembly>
     <members>
-        <member name="M:ParkyAPI.Controllers.NationalParkController.GetNationalPark(System.Int32)">
+        <member name="M:ParkyAPI.Controller.NationalParkController.GetNationalPark(System.Int32)">
             <summary>
             Get individual national park
             </summary>
             <param name="nationalParkId"> The Id of the national Park </param>
             <returns></returns>
         </member>
-        <member name="M:ParkyAPI.Controllers.NationalParkController.GetNationalParks">
+        <member name="M:ParkyAPI.Controller.NationalParkController.GetNationalParks">
             <summary>
             Get list of national parks.
             </summary>

@@ -2,11 +2,11 @@
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ParkyAPI.Models.Dto;
-using ParkyAPI.Models.Mapper;
-using ParkyAPI.Repositories.IRepositories;
+using ParkyAPI.Model.Dto;
+using ParkyAPI.Model.Mapper;
+using ParkyAPI.Repository.IRepositories;
 
-namespace ParkyAPI.Controllers
+namespace ParkyAPI.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
