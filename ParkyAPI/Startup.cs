@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,31 +34,20 @@ namespace ParkyAPI
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
             services.AddScoped<ITrailRepository, TrailRepository>();
 
+            services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.ReportApiVersions = true;
+            });
+
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("ParkyOpenAPISpecNationalPark", new OpenApiInfo
+                x.SwaggerDoc("ParkyOpenAPISpec", new OpenApiInfo
                 {
-                    Title = "Parky API NationalPark",
+                    Title = "Parky API",
                     Version = "1",
-                    Description = "Parky API National Park",
-                    Contact = new OpenApiContact()
-                    {
-                        Email = "zeraatimail@gmail.com",
-                        Name = "Mojtaba Zeraati",
-                        Url = new Uri("https://wwww.bhrugen.com")
-                    },
-                    License = new OpenApiLicense()
-                    {
-                        Name = "MIT License",
-                        Url = new Uri("https://en.wikipedia.org/wiki/MIT_License")
-                    }
-                });
-
-                x.SwaggerDoc("ParkyOpenAPISpecTrail", new OpenApiInfo
-                {
-                    Title = "Parky API Trail",
-                    Version = "1",
-                    Description = "Parky API Trail",
+                    Description = "Parky API",
                     Contact = new OpenApiContact()
                     {
                         Email = "zeraatimail@gmail.com",
@@ -90,8 +80,7 @@ namespace ParkyAPI
             app.UseSwagger();
             app.UseSwaggerUI(x =>
             {
-                x.SwaggerEndpoint("/swagger/ParkyOpenAPISpecNationalPark/swagger.json", "Parky API National Park");
-                x.SwaggerEndpoint("/swagger/ParkyOpenAPISpecTrail/swagger.json", "Parky API Trail");
+                x.SwaggerEndpoint("/swagger/ParkyOpenAPISpecNationalPark/swagger.json", "Parky API");
                 x.RoutePrefix = "";
             });
 

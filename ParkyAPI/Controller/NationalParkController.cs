@@ -10,7 +10,6 @@ namespace ParkyAPI.Controller
 {
     [Route("api/nationalPark")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNationalPark")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class NationalParkController : ControllerBase
     {
