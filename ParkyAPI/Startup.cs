@@ -60,10 +60,11 @@ namespace ParkyAPI
             app.UseHttpsRedirection();
 
             app.UseSwagger();
-            app.UseSwaggerUI(x =>
-            {
-                x.SwaggerEndpoint("/swagger/ParkyOpenAPISpecNationalPark/swagger.json", "Parky API");
-                x.RoutePrefix = "";
+            app.UseSwaggerUI(options => {
+                foreach (var desc in provider.ApiVersionDescriptions)
+                    options.SwaggerEndpoint($"/swagger/{desc.GroupName}/swagger.json",
+                        desc.GroupName.ToUpperInvariant());
+                options.RoutePrefix = "";
             });
 
             app.UseRouting();

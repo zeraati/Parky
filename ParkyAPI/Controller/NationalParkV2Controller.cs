@@ -8,7 +8,8 @@ using ParkyAPI.Repository.IRepositories;
 
 namespace ParkyAPI.Controller
 {
-    [Route("api/nationalPark")]
+    [Route("api/v{version:apiVersion}/nationalPark")]
+    [ApiVersion("2.0")]
     [ApiController]
     [ApiExplorerSettings(GroupName = "ParkyOpenAPISpecNationalPark")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -22,22 +23,17 @@ namespace ParkyAPI.Controller
         }
 
         /// <summary>
-        /// Get individual national park
+        /// Get list of national parks.
         /// </summary>
-        /// <param name="nationalParkId"> The Id of the national Park </param>
         /// <returns></returns>
-        [HttpGet("{nationalParkId:int}", Name = "GetNationalPark")]
-        [ProducesResponseType(200, Type = typeof(NationalParkDto))]
-        [ProducesResponseType(404)]
-        [ProducesDefaultResponseType]
-        public IActionResult GetNationalPark(int nationalParkId)
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(List<NationalParkDto>))]
+        public IActionResult GetNationalParks()
         {
-            var nationalPark = _nationalParkRepository.GetNationalPark(nationalParkId);
+            var nationalParksDto = _nationalParkRepository.GetNationalParks()
+                .Select(NationalParkMapper.Map).ToList();
 
-            if (nationalPark is null) return NotFound();
-
-            var nationalParkDto = NationalParkMapper.Map(nationalPark);
-            return Ok(nationalParkDto);
+            return Ok(nationalParksDto);
         }
     }
 }
